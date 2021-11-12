@@ -35,8 +35,7 @@ fn main() -> Result<()> {
         let value: Value = from_reader(reader)?;
         let file = File::create(path)?;
         let writer = BufWriter::new(file);
-        let formatter = NonBreakingFormatter;
-        let mut ser = Serializer::with_formatter(writer, formatter);
+        let mut ser = Serializer::with_formatter(writer, NonBreakingFormatter);
         value.serialize(&mut ser)?;
     }
     Ok(())
